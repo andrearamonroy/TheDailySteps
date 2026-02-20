@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Support — The Daily Steps</title>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #f0f7ff;
+      --surface: #ffffff;
+      --ink: #0d2d5e;
+      --muted: #4a6080;
+      --accent: #2563eb;
+      --accent-light: #dbeafe;
+      --accent2: #ec4899;
+      --border: #cce0f5;
+      --step: #e8f4ff;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--bg);
+      color: var(--ink);
+      line-height: 1.6;
+      min-height: 100vh;
+    }
+
+    /* ── HERO ── */
+    header {
+      background: #0d2d5e;
+      color: #fff;
+      padding: 72px 24px 60px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    header::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse 80% 60% at 50% 120%, #3b82f655, transparent);
+    }
+
+    .badge {
+      display: inline-block;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--accent-light);
+      background: #2563eb33;
+      border: 1px solid #2563eb88;
+      padding: 4px 14px;
+      border-radius: 20px;
+      margin-bottom: 20px;
+      position: relative;
+    }
+
+    header h1 {
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(2.4rem, 6vw, 3.6rem);
+      font-weight: 400;
+      line-height: 1.15;
+      position: relative;
+      margin-bottom: 12px;
+    }
+
+    header h1 em {
+      font-style: italic;
+      color: #f9a8d4;
+    }
+
+    header p {
+      color: #a09d98;
+      font-size: 1rem;
+      font-weight: 300;
+      position: relative;
+    }
+
+    /* ── STEP COUNTER DECORATION ── */
+    .steps-row {
+      display: flex;
+      justify-content: center;
+      gap: 8px;
+      margin-top: 36px;
+      position: relative;
+    }
+
+    .step-pill {
+      background: #ffffff14;
+      border: 1px solid #ffffff22;
+      border-radius: 20px;
+      padding: 6px 14px;
+      font-size: 12px;
+      color: #ffffff99;
+      font-weight: 500;
+    }
+
+    .step-pill.active {
+      background: linear-gradient(135deg, #3b82f6, #ec4899);
+      border-color: #ec4899;
+      color: #fff;
+    }
+
+    /* ── LAYOUT ── */
+    main {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 64px 24px 80px;
+    }
+
+    /* ── CONTACT CARD ── */
+    .contact-card {
+      background: linear-gradient(135deg, #3b82f6, #ec4899);
+      color: #fff;
+      border-radius: 16px;
+      padding: 36px 40px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+      margin-bottom: 56px;
+      flex-wrap: wrap;
+    }
+
+    .contact-card h2 {
+      font-family: 'DM Serif Display', serif;
+      font-size: 1.5rem;
+      font-weight: 400;
+      margin-bottom: 4px;
+    }
+
+    .contact-card p {
+      font-size: 0.875rem;
+      opacity: 0.8;
+    }
+
+    .contact-btn {
+      display: inline-block;
+      background: #fff;
+      color: var(--accent);
+      font-weight: 600;
+      font-size: 0.875rem;
+      padding: 12px 24px;
+      border-radius: 8px;
+      text-decoration: none;
+      white-space: nowrap;
+      transition: transform 0.15s, box-shadow 0.15s;
+      border: none;
+      cursor: pointer;
+      font-family: 'DM Sans', sans-serif;
+    }
+
+    .contact-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px #00000022;
+    }
+
+    /* ── SECTION HEADING ── */
+    .section-label {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 24px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .section-label::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: var(--border);
+    }
+
+    /* ── FAQ ── */
+    .faq-list {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+      margin-bottom: 56px;
+    }
+
+    details {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      overflow: hidden;
+      transition: box-shadow 0.2s;
+    }
+
+    details:hover {
+      box-shadow: 0 4px 16px #00000009;
+    }
+
+    details[open] {
+      box-shadow: 0 4px 20px #00000012;
+    }
+
+    summary {
+      padding: 20px 24px;
+      font-weight: 500;
+      font-size: 0.9375rem;
+      cursor: pointer;
+      list-style: none;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      user-select: none;
+    }
+
+    summary::-webkit-details-marker { display: none; }
+
+    summary::after {
+      content: '+';
+      font-size: 1.25rem;
+      color: var(--accent);
+      font-weight: 300;
+      flex-shrink: 0;
+      transition: transform 0.2s;
+    }
+
+    details[open] summary::after {
+      transform: rotate(45deg);
+    }
+
+    .faq-body {
+      padding: 0 24px 20px;
+      color: var(--muted);
+      font-size: 0.9rem;
+      line-height: 1.7;
+      border-top: 1px solid var(--border);
+      padding-top: 16px;
+    }
+
+    .faq-body code {
+      background: var(--step);
+      border-radius: 4px;
+      padding: 1px 6px;
+      font-size: 0.85em;
+      font-family: 'SF Mono', 'Fira Code', monospace;
+      color: var(--ink);
+    }
+
+    /* ── TIPS GRID ── */
+    .tips-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 16px;
+      margin-bottom: 56px;
+    }
+
+    .tip-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 24px;
+    }
+
+    .tip-icon {
+      font-size: 1.5rem;
+      margin-bottom: 12px;
+    }
+
+    .tip-card h3 {
+      font-size: 0.875rem;
+      font-weight: 600;
+      margin-bottom: 6px;
+    }
+
+    .tip-card p {
+      font-size: 0.825rem;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      text-align: center;
+      padding: 32px 24px;
+      border-top: 1px solid var(--border);
+      font-size: 0.8rem;
+      color: var(--muted);
+    }
+
+    footer a {
+      color: var(--accent);
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    footer a:hover { text-decoration: underline; }
+
+    /* ── ANIMATIONS ── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(16px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    header > * { animation: fadeUp 0.5s ease both; }
+    header .badge         { animation-delay: 0.05s; }
+    header h1             { animation-delay: 0.1s; }
+    header > p            { animation-delay: 0.15s; }
+    header .steps-row     { animation-delay: 0.2s; }
+
+    @media (max-width: 520px) {
+      .contact-card { flex-direction: column; text-align: center; }
+      .contact-btn { width: 100%; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="badge">Support Center</div>
+  <h1>The <em>Daily</em> Steps</h1>
+  <p>Step Goals. Weekly Progress.</p>
+  <div class="steps-row">
+    <span class="step-pill">2,500</span>
+    <span class="step-pill">5,000</span>
+    <span class="step-pill active">7,500 ✓</span>
+    <span class="step-pill">10,000</span>
+  </div>
+</header>
+
+<main>
+
+  <!-- Contact -->
+  <div class="contact-card">
+    <div>
+      <h2>Need help?</h2>
+      <p>We typically respond within 48 hours.</p>
+    </div>
+    <div>
+      <button class="contact-btn" onclick="document.getElementById('email-reveal').style.display='block'; this.style.display='none';">Email Support</button>
+      <div id="email-reveal" style="display:none; margin-top:12px; background:#ffffff22; border-radius:8px; padding:12px 16px; font-size:0.875rem; line-height:1.6;">
+        📧 Send me an email to:<br><strong><a href="mailto:thedailystepsapp@gmail.com" style="color:#fff; text-decoration:underline;">thedailystepsapp@gmail.com</a></strong>
+      </div>
+    </div>
+  </div>
+
+  <!-- FAQ -->
+  <div class="section-label">Frequently Asked Questions</div>
+
+  <div class="faq-list">
+
+    <details>
+      <summary>How do I change my step goal?</summary>
+      <div class="faq-body">
+        Open the Settings view from the top right corner of the app and change your step goal from there.
+      </div>
+    </details>
+
+    <details>
+      <summary>Why isn't the app counting my steps?</summary>
+      <div class="faq-body">
+        Make sure HealthKit permission is enabled. Go to <code>Settings → Privacy & Security → Health → The Daily Steps</code> and confirm that Read access is turned on for Steps.
+      </div>
+    </details>
+
+    <details>
+      <summary>My step count doesn't match Apple Health — why?</summary>
+      <div class="faq-body">
+        The Daily Steps pulls step data directly from Apple Health. If your count looks off, open the Health app and check that your iPhone or Apple Watch is recording steps correctly. It can sometimes take a few minutes to sync.
+      </div>
+    </details>
+
+    <details>
+      <summary>How do I reset my weekly progress?</summary>
+      <div class="faq-body">
+        Weekly progress resets automatically every Monday. If something looks wrong, try closing and reopening the app. If the issue persists, contact us below.
+      </div>
+    </details>
+
+    <details>
+      <summary>Why isn't my data syncing across my devices?</summary>
+      <div class="faq-body">
+        Make sure iCloud is enabled for The Daily Steps. Go to <code>Settings → [Your Name] → iCloud</code> and check that The Daily Steps is toggled on. Both devices must be signed into the same iCloud account.
+      </div>
+    </details>
+
+    <details>
+      <summary>How do I join a challenge?</summary>
+      <div class="faq-body">
+        Tap the <strong>Challenges</strong> tab at the bottom of the screen, browse available challenges, and tap <strong>Enroll</strong> to join one. Push yourself further!
+      </div>
+    </details>
+
+    <details>
+      <summary>How do I delete my data?</summary>
+      <div class="faq-body">
+        Uninstalling The Daily Steps removes all local data. To remove iCloud data, go to <code>Settings → [Your Name] → iCloud → Manage Account Storage</code> and select The Daily Steps.
+      </div>
+    </details>
+
+  </div>
+
+  <!-- Quick Tips -->
+  <div class="section-label">Quick Tips</div>
+
+  <div class="tips-grid">
+    <div class="tip-card">
+      <div class="tip-icon">🏃</div>
+      <h3>Start small</h3>
+      <p>Set a goal just above your current average and increase it gradually each week.</p>
+    </div>
+    <div class="tip-card">
+      <div class="tip-icon">⌚</div>
+      <h3>Pair with Apple Watch</h3>
+      <p>For the most accurate step count, wear your Apple Watch throughout the day.</p>
+    </div>
+    <div class="tip-card">
+      <div class="tip-icon">📊</div>
+      <h3>Check weekly trends</h3>
+      <p>Review your weekly progress every Monday to stay motivated and adjust your goal.</p>
+    </div>
+  </div>
+
+</main>
+
+<footer>
+  <p>
+    <strong>The Daily Steps</strong> &nbsp;·&nbsp;
+    <a href="./PRIVACY_POLICY.md">Privacy Policy</a> &nbsp;·&nbsp;
+    <a href="mailto:thedailystepsapp@gmail.com">thedailystepsapp@gmail.com</a>
+  </p>
+  <p style="margin-top: 8px;">© 2026 The Daily Steps. All rights reserved.</p>
+</footer>
+
+</body>
+</html>
