@@ -1,0 +1,545 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Privacy Policy — The Daily Steps</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,400&family=Nunito:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --blue-light: #dce8f5;
+      --blue-mid: #b8d0ed;
+      --lavender: #e0d9f0;
+      --orange: #f97316;
+      --orange-light: #fff0e6;
+      --ink: #1a1a2a;
+      --muted: #6b7280;
+      --surface: #f4f7fc;
+      --white: #ffffff;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Nunito', sans-serif;
+      background: var(--surface);
+      color: var(--ink);
+      overflow-x: hidden;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 16px 40px;
+      background: rgba(244,247,252,0.9);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(180,200,230,0.4);
+    }
+
+    .nav-logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.2rem;
+      color: var(--ink);
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .nav-logo em {
+      font-style: italic;
+      font-weight: 400;
+      font-size: 1rem;
+      color: var(--muted);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 28px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: var(--muted);
+      font-size: 0.875rem;
+      font-weight: 600;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover { color: var(--ink); }
+
+    /* ── HERO ── */
+    header {
+      padding: 140px 40px 60px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+      background: var(--ink);
+      color: #fff;
+    }
+
+    .blob {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(70px);
+      opacity: 0.5;
+      pointer-events: none;
+    }
+
+    header .blob:nth-child(1) {
+      width: 400px; height: 400px;
+      background: #2a4a8a;
+      top: -100px; left: -100px;
+    }
+
+    header .blob:nth-child(2) {
+      width: 350px; height: 350px;
+      background: #6040a0;
+      top: -80px; right: -80px;
+    }
+
+    .header-inner { position: relative; z-index: 1; }
+
+    .header-badge {
+      display: inline-block;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      background: rgba(220,232,245,0.15);
+      border: 1px solid rgba(220,232,245,0.3);
+      color: var(--blue-light);
+      padding: 5px 16px;
+      border-radius: 20px;
+      margin-bottom: 20px;
+    }
+
+    header h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.5rem, 5vw, 4rem);
+      font-weight: 700;
+      margin-bottom: 12px;
+    }
+
+    header h1 em {
+      font-style: italic;
+      font-weight: 400;
+      color: #93c5fd;
+    }
+
+    header p {
+      color: rgba(255,255,255,0.55);
+      font-size: 0.9rem;
+      font-weight: 400;
+    }
+
+    /* ── MAIN CONTENT ── */
+    main {
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 64px 24px 80px;
+    }
+
+    /* ── SECTION ── */
+    .policy-section {
+      background: var(--white);
+      border-radius: 16px;
+      padding: 36px 40px;
+      margin-bottom: 16px;
+      border: 1px solid rgba(180,200,230,0.3);
+      box-shadow: 0 2px 12px rgba(26,26,42,0.04);
+    }
+
+    .section-number {
+      display: inline-block;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: #fff;
+      background: var(--ink);
+      padding: 3px 10px;
+      border-radius: 20px;
+      margin-bottom: 12px;
+    }
+
+    .policy-section h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.4rem;
+      font-weight: 700;
+      margin-bottom: 16px;
+      color: var(--ink);
+    }
+
+    .policy-section h3 {
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: var(--ink);
+      margin: 20px 0 8px;
+    }
+
+    .policy-section p {
+      font-size: 0.9rem;
+      color: var(--muted);
+      line-height: 1.75;
+      margin-bottom: 12px;
+    }
+
+    .policy-section p:last-child { margin-bottom: 0; }
+
+    .policy-section ul {
+      list-style: none;
+      margin: 8px 0 12px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .policy-section ul li {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      font-size: 0.9rem;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+
+    .policy-section ul li::before {
+      content: '✦';
+      color: var(--blue-mid);
+      flex-shrink: 0;
+      margin-top: 2px;
+      font-size: 0.75rem;
+    }
+
+    /* ── HIGHLIGHT BOX ── */
+    .highlight-box {
+      background: var(--blue-light);
+      border-left: 4px solid var(--blue-mid);
+      border-radius: 0 10px 10px 0;
+      padding: 16px 20px;
+      margin: 16px 0;
+    }
+
+    .highlight-box p {
+      color: #1a3a6a;
+      font-size: 0.875rem;
+      line-height: 1.65;
+      margin: 0;
+    }
+
+    /* ── ORANGE HIGHLIGHT ── */
+    .orange-box {
+      background: var(--orange-light);
+      border-left: 4px solid var(--orange);
+      border-radius: 0 10px 10px 0;
+      padding: 16px 20px;
+      margin: 16px 0;
+    }
+
+    .orange-box p {
+      color: #7a3000;
+      font-size: 0.875rem;
+      line-height: 1.65;
+      margin: 0;
+    }
+
+    /* ── CONTACT CARD ── */
+    .contact-card {
+      background: var(--ink);
+      color: #fff;
+      border-radius: 16px;
+      padding: 36px 40px;
+      text-align: center;
+      margin-bottom: 16px;
+    }
+
+    .contact-card h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.6rem;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+
+    .contact-card h2 em {
+      font-style: italic;
+      font-weight: 400;
+      color: #93c5fd;
+    }
+
+    .contact-card p {
+      color: rgba(255,255,255,0.6);
+      font-size: 0.9rem;
+      margin-bottom: 24px;
+    }
+
+    .contact-email {
+      display: inline-block;
+      background: var(--blue-light);
+      color: var(--ink);
+      font-weight: 700;
+      font-size: 0.9rem;
+      padding: 12px 28px;
+      border-radius: 50px;
+      text-decoration: none;
+      transition: transform 0.2s;
+    }
+
+    .contact-email:hover { transform: translateY(-2px); }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--ink);
+      color: rgba(255,255,255,0.5);
+      padding: 40px;
+      text-align: center;
+      font-size: 0.85rem;
+    }
+
+    footer a {
+      color: rgba(255,255,255,0.7);
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    footer a:hover { color: #fff; }
+
+    .footer-links {
+      display: flex;
+      justify-content: center;
+      gap: 32px;
+      margin-bottom: 16px;
+      flex-wrap: wrap;
+    }
+
+    /* ── ANIMATIONS ── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .header-badge { animation: fadeUp 0.5s ease both 0.1s; }
+    header h1     { animation: fadeUp 0.5s ease both 0.2s; }
+    header p      { animation: fadeUp 0.5s ease both 0.3s; }
+
+    @media (max-width: 600px) {
+      nav { padding: 16px 20px; }
+      .nav-links { display: none; }
+      header { padding: 120px 24px 48px; }
+      main { padding: 40px 16px 60px; }
+      .policy-section { padding: 24px 20px; }
+      .contact-card { padding: 28px 20px; }
+      footer { padding: 32px 20px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a class="nav-logo" href="./index.html"><em>the</em> DAILY STEPS</a>
+  <ul class="nav-links">
+    <li><a href="./index.html">Home</a></li>
+    <li><a href="./support.html">Support</a></li>
+    <li><a href="./privacy.html">Privacy</a></li>
+  </ul>
+</nav>
+
+<!-- HEADER -->
+<header>
+  <div class="blob"></div>
+  <div class="blob"></div>
+  <div class="header-inner">
+    <div class="header-badge">Legal</div>
+    <h1><em>Privacy</em> Policy</h1>
+    <p>The Daily Steps &nbsp;·&nbsp; Effective: February 20, 2026 &nbsp;·&nbsp; Last Updated: February 20, 2026</p>
+  </div>
+</header>
+
+<main>
+
+  <!-- 1 -->
+  <div class="policy-section">
+    <span class="section-number">01</span>
+    <h2>Introduction</h2>
+    <p>Welcome to The Daily Steps ("App", "we", "us", or "our"). We are committed to protecting your privacy and being transparent about how we handle your data.</p>
+    <p>This Privacy Policy explains what information we collect, how we use it, and your rights regarding that information. By downloading or using The Daily Steps, you agree to the practices described in this policy.</p>
+  </div>
+
+  <!-- 2 -->
+  <div class="policy-section">
+    <span class="section-number">02</span>
+    <h2>Information We Collect</h2>
+
+    <h3>Health & Fitness Data (via Apple HealthKit)</h3>
+    <p>With your explicit permission, The Daily Steps accesses the following data from Apple HealthKit:</p>
+    <ul>
+      <li>Step count data (read access only)</li>
+    </ul>
+    <p>This is used solely to display your daily step count, help you set a personal goal, and track weekly progress. We do not access any other HealthKit data types.</p>
+
+    <h3>Data You Provide Directly</h3>
+    <ul>
+      <li>Step goal preferences you set within the App</li>
+      <li>Any preferences or settings you configure</li>
+    </ul>
+
+    <h3>iCloud Data</h3>
+    <p>If you are signed into iCloud, the App uses iCloud (via CloudKit) to sync your step goals and weekly progress across your Apple devices. This data is stored in your personal iCloud account.</p>
+
+    <h3>Automatically Collected Data</h3>
+    <ul>
+      <li>Device type and operating system version</li>
+      <li>App crash logs and performance data</li>
+    </ul>
+  </div>
+
+  <!-- 3 -->
+  <div class="policy-section">
+    <span class="section-number">03</span>
+    <h2>How We Use Your Information</h2>
+    <ul>
+      <li>To display your current and historical step count data</li>
+      <li>To help you set and track a personalized daily step goal</li>
+      <li>To calculate and display your weekly step progress</li>
+      <li>To sync your goals and progress across devices via iCloud</li>
+      <li>To diagnose technical issues and improve App performance</li>
+    </ul>
+  </div>
+
+  <!-- 4 -->
+  <div class="policy-section">
+    <span class="section-number">04</span>
+    <h2>HealthKit Data — Special Restrictions</h2>
+    <p>The Daily Steps accesses Apple HealthKit data and is subject to strict rules. We are committed to the following:</p>
+    <div class="orange-box">
+      <p>HealthKit data is used <strong>only</strong> to provide health and fitness features within the App. We do not use HealthKit data for advertising, marketing, or any purpose unrelated to health and fitness. We do not sell HealthKit data to any third party.</p>
+    </div>
+    <ul>
+      <li>We do not use HealthKit data for advertising or marketing</li>
+      <li>We do not sell HealthKit data to any third party</li>
+      <li>We do not share HealthKit data except as required to operate the App or by law</li>
+      <li>We do not use HealthKit data to build user profiles for commercial purposes</li>
+    </ul>
+  </div>
+
+  <!-- 5 -->
+  <div class="policy-section">
+    <span class="section-number">05</span>
+    <h2>iCloud and Data Storage</h2>
+
+    <h3>On-Device Storage</h3>
+    <p>Your step data, goals, and progress are stored locally on your device using Core Data. This data is not transmitted to any servers operated by us.</p>
+
+    <h3>iCloud Sync</h3>
+    <p>If you have iCloud enabled, your data may sync to your iCloud account via Apple's CloudKit framework.</p>
+    <div class="highlight-box">
+      <p>Your data is stored in <strong>your personal iCloud account</strong>, not on our servers. Apple manages the security and storage of this data. You can disable iCloud sync at any time in <strong>Settings → [Your Name] → iCloud</strong>.</p>
+    </div>
+
+    <h3>Data Deletion</h3>
+    <p>Deleting the App removes all locally stored data. To remove iCloud data, go to <strong>Settings → [Your Name] → iCloud → Manage Account Storage</strong> and select The Daily Steps.</p>
+  </div>
+
+  <!-- 6 -->
+  <div class="policy-section">
+    <span class="section-number">06</span>
+    <h2>How We Share Your Information</h2>
+    <p>We do not sell your personal information. We may share information only in these limited circumstances:</p>
+    <ul>
+      <li><strong>Apple / iCloud (CloudKit)</strong> — to sync your data across your devices if iCloud is enabled</li>
+      <li><strong>Legal Requirements</strong> — if required by law, court order, or governmental authority</li>
+      <li><strong>Business Transfers</strong> — in the event of a merger or acquisition, bound by this Privacy Policy</li>
+    </ul>
+    <p>We do not share your data with advertisers, analytics firms, or other third parties.</p>
+  </div>
+
+  <!-- 7 -->
+  <div class="policy-section">
+    <span class="section-number">07</span>
+    <h2>Your Rights and Choices</h2>
+
+    <h3>HealthKit Permissions</h3>
+    <p>Grant or revoke HealthKit access anytime via <strong>Settings → Privacy & Security → Health → The Daily Steps</strong>.</p>
+
+    <h3>iCloud Sync</h3>
+    <p>Enable or disable iCloud sync through your device's iCloud settings at any time.</p>
+
+    <h3>GDPR Rights (EU/UK Users)</h3>
+    <p>You have the right to access, correct, delete, and export your personal data. Since data resides on your device and in your iCloud account, most rights can be exercised directly on your device. For additional requests, contact us below.</p>
+
+    <h3>California Residents (CCPA/CPRA)</h3>
+    <p>We do not sell or share personal information as defined by the CCPA/CPRA. To exercise your rights, contact us using the information below.</p>
+  </div>
+
+  <!-- 8 -->
+  <div class="policy-section">
+    <span class="section-number">08</span>
+    <h2>Children's Privacy</h2>
+    <p>The Daily Steps is not directed at children under the age of 13. We do not knowingly collect personal information from children under 13. If you believe a child has provided us with personal information, please contact us and we will take steps to delete such information.</p>
+  </div>
+
+  <!-- 9 -->
+  <div class="policy-section">
+    <span class="section-number">09</span>
+    <h2>Data Security</h2>
+    <p>Since your data is stored on your device and in your personal iCloud account:</p>
+    <ul>
+      <li>Local data is protected by your device's built-in security (passcode, Face ID, Touch ID)</li>
+      <li>iCloud data is encrypted in transit and at rest by Apple</li>
+    </ul>
+    <p>We recommend keeping your iOS software up to date. No method of transmission or storage is 100% secure.</p>
+  </div>
+
+  <!-- 10 -->
+  <div class="policy-section">
+    <span class="section-number">10</span>
+    <h2>Third-Party Services</h2>
+    <p>The Daily Steps uses only Apple-provided frameworks:</p>
+    <ul>
+      <li><strong>Apple HealthKit</strong> — for reading step count data</li>
+      <li><strong>Apple Core Data</strong> — for local on-device storage</li>
+      <li><strong>Apple CloudKit / iCloud</strong> — for cross-device data sync</li>
+    </ul>
+    <p>We do not integrate any third-party advertising SDKs, social media plugins, or analytics platforms.</p>
+  </div>
+
+  <!-- 11 -->
+  <div class="policy-section">
+    <span class="section-number">11</span>
+    <h2>Changes to This Policy</h2>
+    <p>We may update this Privacy Policy from time to time. When we do, we will update the "Last Updated" date at the top of this page. If changes are material, we will notify you via an in-app notice. Your continued use of The Daily Steps after any changes constitutes your acceptance of the updated policy.</p>
+  </div>
+
+  <!-- 12 - Contact -->
+  <div class="contact-card">
+    <h2>Questions? <em>Contact us.</em></h2>
+    <p>We'll respond to privacy-related inquiries within 30 days.</p>
+    <a class="contact-email" href="mailto:thedailystepsapp@gmail.com">
+      📧 thedailystepsapp@gmail.com
+    </a>
+  </div>
+
+</main>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-links">
+    <a href="./index.html">Home</a>
+    <a href="./support.html">Support</a>
+    <a href="./privacy.html">Privacy Policy</a>
+    <a href="mailto:thedailystepsapp@gmail.com">thedailystepsapp@gmail.com</a>
+  </div>
+  <p>© 2026 The Daily Steps. All rights reserved.</p>
+</footer>
+
+</body>
+</html>
